@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lz.zknock.dao.WSJSUserDao">
+    <insert id="insertWSJSUser" parameterType="com.lz.zknock.entity.WSJSUser" useGeneratedKeys="true" keyColumn="id">
+        insert into tb_knocker_js(internal_key, user_token, user_name, type, create_time, update_time,
+        address) values(#{internal_key}, #{user_token}, #{user_name}, #{create_time},
+        #{update_time}, #{address})
+    </insert>
+
+    <update id="updateUser" parameterType="com.lz.zknock.entity.WSJSUser">
+        update tb_knocker_js set internal_key=#{internal_key}, user_token=#{user_token}, user_name=#{user_name},
+         type=#{type}, create_time=#{create_time}, update_time=#{update_time}, address=#{address} where id=#{id}
+    </update>
+
+    <select id="getById" parameterType="int" resultType="com.lz.zknock.entity.WSJSUser">
+        select * from tb_knocker_js where id=#{id}
+    </select>
+
+    <select id="getAllUser" resultType="com.lz.zknock.entity.WSJSUser">
+        select * from tb_knocker_js where id=#{id}
+    </select>
+
+    <delete id="delUserById" parameterType="int">
+        delete from tb_knocker_js where id=#{id}
+    </delete>
+</mapper>
